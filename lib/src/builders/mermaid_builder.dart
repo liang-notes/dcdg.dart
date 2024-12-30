@@ -38,8 +38,7 @@ class MermaidBuilder implements DiagramBuilder {
       rightBracket: '~',
       stripParens: true,
     );
-    _lines.add(
-        '$_currentClass : $visibilityPrefix$name$staticSuffix$abstractSuffix $type');
+    _lines.add('$_currentClass : $visibilityPrefix$name$staticSuffix$abstractSuffix $type');
   }
 
   @override
@@ -56,8 +55,7 @@ class MermaidBuilder implements DiagramBuilder {
     final abstractSuffix = element.isAbstract ? '*' : '';
     final name = element.name;
     final type = element.returnType.getDisplayString(withNullability: true);
-    _lines.add(
-        '$_currentClass : $visibilityPrefix$name()$staticSuffix$abstractSuffix $type');
+    _lines.add('$_currentClass : $visibilityPrefix$name()$staticSuffix$abstractSuffix $type');
   }
 
   @override
@@ -81,7 +79,7 @@ class MermaidBuilder implements DiagramBuilder {
     if (element.isAbstract) {
       _lines.add('<<abstract>> $_currentClass');
     }
-    if (element.isEnum) {
+    if (element.isDartCoreEnum) {
       _lines.add('<<enumeration>> $_currentClass');
     }
   }

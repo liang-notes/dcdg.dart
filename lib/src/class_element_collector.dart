@@ -25,7 +25,7 @@ class ClassElementCollector extends RecursiveElementVisitor<void> {
   }
 
   @override
-  void visitExportElement(ExportElement element) {
+  void visitLibraryExportElement(LibraryExportElement element) {
     if (!_exportOnly) {
       return;
     }
@@ -53,10 +53,8 @@ class ClassElementCollector extends RecursiveElementVisitor<void> {
         return true;
       }
 
-      final shouldShow =
-          _shownNames.isNotEmpty && _shownNames.contains(element.name);
-      final shouldHide =
-          _hiddenNames.isNotEmpty && _hiddenNames.contains(element.name);
+      final shouldShow = _shownNames.isNotEmpty && _shownNames.contains(element.name);
+      final shouldHide = _hiddenNames.isNotEmpty && _hiddenNames.contains(element.name);
       return _exportOnly ? (shouldShow && !shouldHide) : true;
     }
 

@@ -106,14 +106,13 @@ class NomnomlBuilder implements DiagramBuilder {
       final visibilityPrefix = getVisibility(element);
       final staticPrefix = element.isStatic ? '<static>' : '';
       final methodName = element.name;
-      final methodType =
-          element.returnType.getDisplayString(withNullability: true);
+      final methodType = element.returnType.getDisplayString(withNullability: true);
       return '  $staticPrefix$visibilityPrefix$methodType $methodName()';
     }).join(';\n'));
   }
 
-  String fullClassName(ClassElement element) {
-    final abstractModifier = element.isAbstract ? '<abstract>' : '';
+  String fullClassName(InterfaceElement element) {
+    final abstractModifier = '<interface>';
     final className = typeName(element, withNullability: false);
     return '$abstractModifier$className';
   }
